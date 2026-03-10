@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* Form submit */
+  /* Updated form submit so the form does not submit
+     when required fields are empty or invalid */
   contactForm.addEventListener("submit", function (event) {
     event.preventDefault();
 
