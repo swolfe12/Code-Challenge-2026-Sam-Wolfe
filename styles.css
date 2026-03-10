@@ -17,8 +17,14 @@
 /* ========================================
    Base
 ======================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 
 body {
+  margin: 0;
   background: var(--white-hex);
   color: var(--dark-gray-hex);
   font-size: 16px;

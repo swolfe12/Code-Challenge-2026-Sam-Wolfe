@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Broken Page</title>
+    <title>Beautiful Page</title>
     <link rel="stylesheet" href="styles.css" />
-    <!--Fixed Path-->
-    <script src="scripts.js"></script>
+    <!--Fixed Path and add defer tag-->
+    <script src="scripts.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -28,8 +28,10 @@
           />
         </picture>
       </a>
+      <!--Set menu btn type so it doesn't accidentaly act like a submit button-->
       <button
         id="menu-btn"
+        type="button"
         class="menu-btn"
         aria-expanded="false"
         aria-controls="menu"
@@ -39,7 +41,8 @@
         <img src="assets/xmark.svg" alt="" class="icon icon-close" />
       </button>
 
-      <nav id="menu" class="navigation">
+      <!--Added accessibility label to nav-->
+      <nav id="menu" class="navigation" aria-label="Primary">
         <ul class="navigation-list">
           <li><a href="#">Home</a></li>
           <li><a href="#">About</a></li>
@@ -72,12 +75,17 @@
                 srcset="assets/image-mobile.jpg"
                 media="(max-width: 950px)"
               />
-
+              <!-- added width, height, sizes, and decoding="async" to reduce layout shift 
+							and improve loading behavior-->
               <img
                 src="assets/image.jpg"
                 srcset="assets/image@2x.jpg 2x"
+                sizes="(max-width: 950px) 100vw, 50vw"
+                width="640"
+                height="400"
                 alt="Example image"
                 loading="lazy"
+                decoding="async"
               />
             </picture>
           </div>
