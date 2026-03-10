@@ -1,30 +1,58 @@
 document.addEventListener("DOMContentLoaded", function () {
   const menu = document.getElementById("menu");
   const menuBtn = document.getElementById("menu-btn");
+  const backToTop = document.getElementById("back-to-top");
+  const contactForm = document.getElementById("contact-form");
 
-  /* Updated toggleMenu() to toggle .visible class on the menu defined in css and 
-		an is-open class on the button itself */
+  /* Updated toggleMenu() to use the .is-open class
+     for both the nav and the button */
   function toggleMenu() {
-    menu.classList.toggle("visible");
     const isOpen = menu.classList.toggle("is-open");
     menuBtn.classList.toggle("is-open", isOpen);
     menuBtn.setAttribute("aria-expanded", String(isOpen));
     menuBtn.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
   }
 
-  /* Click action was on menu insted of menuBtn */
+  /* Click action was on menu instead of menuBtn */
   menuBtn.addEventListener("click", toggleMenu);
-});
 
-document
-  .getElementById("contact-form")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-    alert("Form submitted!");
+  /* Back to top visibility */
+  let ticking = false;
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 200) {
+          backToTop.classList.add("visible");
+        } else {
+          backToTop.classList.remove("visible");
+        }
+
+        ticking = false;
+      });
+
+      ticking = true;
+    }
   });
 
-window.onscroll = function () {
-  if (window.scrollY > 500) {
-    document.getElementById("back-to-top").style.display = "block";
-  }
-};
+  /* Back to top click behavior */
+  backToTop.addEventListener("click", function (event) {
+    event.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
+
+  /* Form submit */
+  contactForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    if (!contactForm.checkValidity()) {
+      contactForm.reportValidity();
+      return;
+    }
+
+    alert("Form submitted!");
+  });
+});

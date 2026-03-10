@@ -1,5 +1,6 @@
 /* Flattened nesting for broader browser compatibility.
    In a larger project, I would likely use SCSS or a build step. */
+:root {
   --dark-gray-hex: #323848;
   --dark-gray-rgb: 50, 56, 72;
   --orange-hex: #f79233;
@@ -28,20 +29,20 @@ header {
 }
 @media screen and (min-width: 951px) {
   header {
-		/*Adjusted spacing to match Figma */	
+    /*Adjusted spacing to match Figma */
     margin: 20px;
     padding: 20px 30px;
   }
 }
 
 .menu-btn {
-	/* updated to circular button */
+  /* updated to circular button */
   position: relative;
   z-index: 3;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-	/* Increased button size to match Figma */ 
+  /* Increased button size to match Figma */
   width: 54px;
   height: 54px;
   padding: 0;
@@ -259,4 +260,44 @@ section {
   gap: 1em;
   max-width: 500px;
   margin: 0 auto;
+}
+#back-to-top {
+  position: fixed;
+  bottom: 74px;
+  right: 44px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--orange-hex);
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 200ms ease,
+    transform 200ms ease;
+
+  transform: translateY(10px);
+}
+
+/* arrow icon */
+#back-to-top img {
+  width: 20px;
+  height: 20px;
+  /* Updated svg to fill white */
+}
+
+/* visible state */
+#back-to-top.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* hover interaction */
+#back-to-top:hover {
+  transform: translateY(-2px);
 }
