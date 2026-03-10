@@ -1,16 +1,46 @@
-For this code challenge we have provided you with a basic page that has a variety of issues. Take a moment to get a familiar with the provided code, read the mock prompt below, take a look at the mock-up, and let us know your estimated time frame for completion.
+# DynamiX Code Challenge
 
-Mock-up: https://www.figma.com/design/naPtYuMBNXSNQJ1vGVxTso/Code-Challenge---2026-External?node-id=0-1&t=PYPCnFAjzbXk5jLO-1
+This repository contains my solution to the DynamiX frontend code challenge. The goal was to resolve functional issues, improve performance and accessibility, and align the page styling with the provided Figma mockup.
 
-------
+## Overview
 
-Our totally real client reached out saying their site is not working in a few different ways. First and foremost it doesn't match the mock-up they were provided, but even the page they were shown doesn't work as expected. Below are a few of the functional issues the client has noticed, but I'm sure there are some they haven't found yet.
+The original page contained several functional, accessibility, and performance issues. I reviewed the provided code, reproduced the reported problems, and implemented fixes while improving the overall structure and maintainability of the code.
 
-- the menu doesn't open on click
-- the back to top button shows all the time
-- the form can submit even when the inputs are empty
-- there are a variety of performance issues
-	- images are not optimized for mobile
-	- scrolling is a bit jumpy and sluggish
+## Issues Addressed
 
-Just from glancing at the code, I can see quite a few standards issues along with accessibility issues. The CSS could also be implemented more efficiently with less specificity by utilizing classes along with being more consistent.
+### Functional Fixes
+
+- Fixed mobile menu toggle so it opens and closes correctly
+- Corrected the back-to-top button so it only appears after scrolling
+- Added smooth scrolling behavior for the back-to-top interaction
+- Prevented form submission when required fields are empty or invalid
+
+### Accessibility Improvements
+
+- Added proper form labels for screen readers (using visually hidden labels)
+- Improved button semantics and ARIA attributes for the navigation menu
+- Ensured interactive elements are accessible via keyboard
+- Added appropriate alt text to images
+
+### Performance Improvements
+
+- Implemented responsive images using `<picture>` and `srcset`
+- Served optimized mobile images for smaller screens
+- Added lazy loading for non-critical images
+- Reduced layout shift by including image dimensions
+
+### CSS Improvements
+
+- Refactored styles for readability and consistency
+- Simplified selector specificity by relying more on classes
+- Organized the stylesheet into logical sections (tokens, layout, components, utilities)
+- Converted layout to a mobile-first approach
+
+### Visual Alignment
+
+- Adjusted spacing, typography, and layout to more closely match the provided Figma mockup
+- Improved responsiveness across mobile and desktop breakpoints
+
+## Notes
+
+Some spacing and sizing values were inferred visually where exact measurements were not explicitly provided in the Figma file. The implementation aims to match the design intent as closely as possible while keeping the CSS maintainable.
